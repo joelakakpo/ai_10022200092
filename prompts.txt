@@ -1,0 +1,20 @@
+Answer the question using the following context:
+The election was won by candidate A.
+Candidate B focused on education policies.
+Question: Who won the election?
+You must only use the provided context. 
+If the answer is not in the context, say "Not available."
+
+Context:
+The election was won by candidate A.
+Candidate B focused on education policies.
+Question: Who won the election?
+Answer the question using the expanded queries and retrieved context.
+Context:
+The election was won by candidate A.
+Candidate B focused on education policies.
+The election was won by candidate A.
+Candidate B focused on education policies.
+The election was won by candidate A.
+Candidate B focused on education policies.
+Question: Who won the election?

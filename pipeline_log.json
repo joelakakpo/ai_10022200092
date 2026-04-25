@@ -1,0 +1,57 @@
+[
+  {
+    "run_id": 1,
+    "experiment": "Basic",
+    "stages": [
+      { "stage": "User Query", "data": "Who won the election?" },
+      { "stage": "Retrieved Documents", "data": [["The election was won by candidate A.", 0.464], ["Candidate B focused on education policies.", 1.507], ["Economic growth slowed in 2025.", 1.734]] },
+      { "stage": "Selected Context", "data": "The election was won by candidate A." },
+      { "stage": "Final Prompt", "data": "Answer the question using the following context:\nThe election was won by candidate A.\nQuestion: Who won the election?" },
+      { "stage": "LLM Response", "data": "[LLM OUTPUT] Answering: Who won the election? using context." }
+    ]
+  },
+  {
+    "run_id": 2,
+    "experiment": "Hallucination-Control",
+    "stages": [
+      { "stage": "User Query", "data": "Who won the election?" },
+      { "stage": "Retrieved Documents", "data": [["The election was won by candidate A.", 0.464], ["Candidate B focused on education policies.", 1.507], ["Economic growth slowed in 2025.", 1.734]] },
+      { "stage": "Selected Context", "data": "The election was won by candidate A." },
+      { "stage": "Final Prompt", "data": "You must only use the provided context. If the answer is not in the context, say \"Not available.\"\n\nContext:\nThe election was won by candidate A.\nQuestion: Who won the election?" },
+      { "stage": "LLM Response", "data": "[LLM OUTPUT] Answering: Who won the election? using context." }
+    ]
+  },
+  {
+    "run_id": 3,
+    "experiment": "Expanded Query",
+    "stages": [
+      { "stage": "User Query", "data": "Who won the election?" },
+      { "stage": "Retrieved Documents", "data": [["The election was won by candidate A.", 0.464], ["Candidate B focused on education policies.", 1.507], ["Economic growth slowed in 2025.", 1.734]] },
+      { "stage": "Selected Context", "data": "The election was won by candidate A." },
+      { "stage": "Final Prompt", "data": "Answer the question using the expanded queries and retrieved context.\nContext:\nThe election was won by candidate A.\nQuestion: Who won the election?" },
+      { "stage": "LLM Response", "data": "[LLM OUTPUT] Answering: Who won the election? using context." }
+    ]
+  },
+  {
+    "run_id": 4,
+    "experiment": "Ambiguous Query",
+    "stages": [
+      { "stage": "User Query", "data": "Who won?" },
+      { "stage": "Retrieved Documents", "data": [["The election was won by candidate A.", 1.192], ["Economic growth slowed in 2025.", 1.88], ["Candidate B focused on education policies.", 1.888]] },
+      { "stage": "Selected Context", "data": "The election was won by candidate A." },
+      { "stage": "Final Prompt", "data": "Answer the question using the following context:\nThe election was won by candidate A.\nQuestion: Who won?" },
+      { "stage": "LLM Response", "data": "[LLM OUTPUT] Answering: Who won? using context." }
+    ]
+  },
+  {
+    "run_id": 5,
+    "experiment": "Misleading Query",
+    "stages": [
+      { "stage": "User Query", "data": "Who won the election in 2025?" },
+      { "stage": "Retrieved Documents", "data": [["The election was won by candidate A.", 0.826], ["Economic growth slowed in 2025.", 1.175], ["Candidate B focused on education policies.", 1.474]] },
+      { "stage": "Selected Context", "data": "The election was won by candidate A.\nEconomic growth slowed in 2025.\nCandidate B focused on education policies." },
+      { "stage": "Final Prompt", "data": "Answer the question using the following context:\nThe election was won by candidate A.\nEconomic growth slowed in 2025.\nCandidate B focused on education policies.\nQuestion: Who won the election in 2025?" },
+      { "stage": "LLM Response", "data": "[LLM OUTPUT] Answering: Who won the election in 2025? using context." }
+    ]
+  }
+]
